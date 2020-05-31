@@ -16,7 +16,7 @@ import time
 class AutoListSpider(scrapy.Spider): 
         name = 'autolist'
         allowed_domains = ['autolist.com']
-        start_urls = ['https://www.autolist.com/listings#page=1&latitude=39.6888&location=Denver%2C+CO&longitude=-105.156']
+        start_urls = ['https://www.autolist.com/listings#page=61&latitude=39.6888&location=Denver%2C+CO&longitude=-105.156']
 
         def __init__(self):
             self.driver = webdriver.Chrome('/usr/bin/chromedriver')
@@ -24,10 +24,10 @@ class AutoListSpider(scrapy.Spider):
         def parse(self, response):
             
             self.driver.get(self.start_urls[0])
-            with open('scrape_data.csv', 'w', newline='') as file: 
+            with open('scrape_data.csv_4', 'w', newline='') as file: 
                 csvwriter = csv.writer(file, delimiter='|') 
                 csvwriter.writerow(['title', 'year', 'price', 'feature_names', 'feature_values', 'items'])
-                iterator = 1
+                iterator = 61
                 
                 while iterator <= 100:
             
